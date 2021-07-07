@@ -1,5 +1,8 @@
 <div class="container">
-    {{#each posts}} {{> post}} {{/each}}
+
+
+    {{#each posts}}
+    {{> post logged_in=../logged_in}} {{/each}}
 
 </div>
 <div class="d-grid gap-2 col-6 position-absolute bottom-0 start-50 translate-middle-x">

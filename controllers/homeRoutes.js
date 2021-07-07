@@ -4,7 +4,7 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-        const postData = await Post.findAll({ include: [{model: User}, {model: Comment}]});
+        const postData = await Post.findAll({ include: [{model: User}, {model: Comment, include: User}]});
         const posts = postData.map(post => post.get({plain: true}));
         posts.forEach(el=> el.isOwnedByCurrentUser = el.user_id === req.session.user_id);
         res.render('all', {posts, logged_in: req.session.logged_in});
@@ -19,7 +19,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
           where: {
               user_id: req.session.user_id
           },
-          include: [{model: Comment}]
+          include: [{model: Comment, include: User}]
       })
     const posts = postsData.map(el => el.get({plain: true}));
         posts.forEach(el=> el.isOwnedByCurrentUser = el.user_id === req.session.user_id);

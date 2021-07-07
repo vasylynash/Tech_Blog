@@ -2,6 +2,7 @@
     <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{user.name}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{format_date date_created}}</h6>
         <p class="card-text">{{content}}</p>
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#comments{{@index}}"
             aria-expanded="false" aria-controls="comments">View
@@ -9,11 +10,16 @@
         <div class="collapse" id="comments{{@index}}">
             {{#each comments }}
             <div class="card card-body">
+                <h6 class="card-subtitle mb-2 text-muted">{{user.name}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{format_date date_created}}</h6>
                 {{content}}
             </div>
             {{/each}}
         </div>
-        <a href="#" class="card-link" data-toggle="modal" data-target="#create-comment-{{@index}}">Add comment</a>
+        {{#if logged_in}}
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#create-comment-{{@index}}">Add
+            comment</button>
+        {{/if}}
         {{#if isOwnedByCurrentUser}}
         <button class="btn btn-primary" type="button" onclick="deletePost({{id}})">Delete post</button>
         <button class="btn btn-primary me-md-2" data-toggle="modal" data-target="#update-post-{{id}}"
