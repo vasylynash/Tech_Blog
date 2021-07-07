@@ -14,7 +14,13 @@
             {{/each}}
         </div>
         <a href="#" class="card-link" data-toggle="modal" data-target="#create-comment-{{@index}}">Add comment</a>
+        {{#if isOwnedByCurrentUser}}
+        <button class="btn btn-primary" type="button" onclick="deletePost({{id}})">Delete post</button>
+        <button class="btn btn-primary me-md-2" data-toggle="modal" data-target="#update-post-{{id}}"
+            type="button">Update post</button>
 
+
+        {{/if}}
 
         <div class="modal fade" id="create-comment-{{@index}}" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
@@ -44,5 +50,41 @@
 
 
 
+
+
+
+
         </div>
+        <div class="modal fade" id="update-post-{{id}}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <form
+                    onsubmit="updatePost({{id}}, this.elements['title'].value, this.elements['content'].value) ;return false;">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Update post</h5>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="mb-3">
+                                <label for="email-name" class="col-form-label">Title:</label>
+                                <input type="text" class="form-control" name="title" value="{{title}}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password-text" class="col-form-label">Text:</label>
+                                <textarea type="text" class="form-control" name="content">{{content}}</textarea>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
     </div>
+</div>

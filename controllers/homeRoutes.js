@@ -6,6 +6,7 @@ router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({ include: [{model: User}, {model: Comment}]});
         const posts = postData.map(post => post.get({plain: true}));
+        posts.forEach(el=> el.isOwnedByCurrentUser = el.user_id === req.session.user_id);
         res.render('all', {posts, logged_in: req.session.logged_in});
     } catch (error) {
         res.json(error)
@@ -21,8 +22,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
           include: [{model: Comment}]
       })
     const posts = postsData.map(el => el.get({plain: true}));
+        posts.forEach(el=> el.isOwnedByCurrentUser = el.user_id === req.session.user_id);
 
-    res.render('dashboard', {posts, logged_in: req.session.logged_in });
+    res.render('dashboard', {posts, logged_in: req.session.logged_in});
   } catch (err) {
     res.status(500).json(err);
   }
