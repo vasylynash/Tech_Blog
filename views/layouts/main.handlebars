@@ -26,14 +26,71 @@
                     <a class="nav-link" href="#">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#login-form">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Logout</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#register-form">Register</a>
+                </li>
             </ul>
         </div>
     </nav>
+    <div class="modal fade" id="login-form" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form>
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Login</h5>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label for="email-name" class="col-form-label">Email:</label>
+                            <input type="text" class="form-control" id="email-login">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password-text" class="col-form-label">Password:</label>
+                            <input type="text" class="form-control" id="password-login"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" type="submit">Log in</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="modal fade" id="register-form" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Register</h5>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="email-name" class="col-form-label">Email:</label>
+                            <input type="text" class="form-control" id="email-register">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password-text" class="col-form-label">Password:</label>
+                            <input type="text" class="form-control" id="password-register"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" type="submit">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
     {{{body}}}
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -45,6 +102,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="./js/login.js"></script>
 </body>
 
 </html>
