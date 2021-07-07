@@ -1,0 +1,17 @@
+<div class="card w-100">
+    <div class="card-body">
+        <h5 class="card-title">{{title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{user.name}}</h6>
+        <p class="card-text">{{content}}</p>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#comments{{@index}}"
+            aria-expanded="false" aria-controls="comments">View
+            comments ({{comments.length}})</button>
+        {{#each comments }} <div class="collapse" id="comments{{@../index}}">
+            <div class="card card-body">
+                {{content}}
+            </div>
+        </div> {{/each}}
+
+        <a href="#" class="card-link">Add comment</a>
+    </div>
+</div>
