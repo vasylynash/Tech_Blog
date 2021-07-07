@@ -6,7 +6,9 @@ router.get('/', withAuth, async (req, res) => {
     try {
         const posts = Post.findAll({
             where: user_id = req.body.user_id
-        })
+        },
+        {include: Comment})
+        console.log(posts);
 
     }
     catch(e) {

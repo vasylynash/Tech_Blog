@@ -1,9 +1,8 @@
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
+<div class="container">
+    {{#each posts}} {{> post}} {{/each}}
+
+</div>
+<div class="d-grid gap-2 col-6 position-absolute bottom-0 start-50 translate-middle-x">
+    <button class="btn btn-primary me-md-2" type="button">Add post</button>
+    {{!-- <button class="btn btn-primary" type="button">Button</button> --}}
 </div>

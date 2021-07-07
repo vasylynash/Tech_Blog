@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({ include: [{model: User}, {model: Comment}]});
         const posts = postData.map(post => post.get({plain: true}));
-        res.render('all', {posts});
+        res.render('all', {posts, logged_in: req.session.logged_in});
     } catch (error) {
         res.json(error)
     }
@@ -17,11 +17,13 @@ router.get('/dashboard', withAuth, async (req, res) => {
       const postsData = await Post.findAll({
           where: {
               user_id: req.session.user_id
-          }
+          },
+          include: [{model: Comment}]
       })
     const posts = postsData.map(el => el.get({plain: true}));
+    console.log(posts);
 
-    res.render('dashboard', {posts});
+    res.render('dashboard', {posts, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -32,7 +34,6 @@ router.get('/login', (req, res) => {
     res.redirect('/dashboard');
     return;
   }
-
   res.render('login');
 });
 

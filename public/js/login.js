@@ -36,7 +36,7 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert(response.statusText);
+      alert(await response.json());
     }
   }
 };
@@ -46,5 +46,5 @@ document
   .addEventListener('submit', loginFormHandler);
 
 document
-  .querySelector('#register-form')
+  .querySelector('#register-form form')
   .addEventListener('submit', signupFormHandler);
