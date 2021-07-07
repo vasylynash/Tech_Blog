@@ -6,12 +6,43 @@
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#comments{{@index}}"
             aria-expanded="false" aria-controls="comments">View
             comments ({{comments.length}})</button>
-        {{#each comments }} <div class="collapse" id="comments{{@../index}}">
+        <div class="collapse" id="comments{{@index}}">
+            {{#each comments }}
             <div class="card card-body">
                 {{content}}
             </div>
-        </div> {{/each}}
+            {{/each}}
+        </div>
+        <a href="#" class="card-link" data-toggle="modal" data-target="#create-comment-{{@index}}">Add comment</a>
 
-        <a href="#" class="card-link">Add comment</a>
+
+        <div class="modal fade" id="create-comment-{{@index}}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <form onsubmit="addComment({{id}}, this.elements['content'].value); return false;">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">New comment</h5>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="mb-3">
+                                <label for="password-text" class="col-form-label">Text:</label>
+                                <textarea type="text" name='content' class="form-control"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+
+        </div>
     </div>
-</div>

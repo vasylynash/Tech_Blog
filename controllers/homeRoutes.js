@@ -21,7 +21,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
           include: [{model: Comment}]
       })
     const posts = postsData.map(el => el.get({plain: true}));
-    console.log(posts);
 
     res.render('dashboard', {posts, logged_in: req.session.logged_in });
   } catch (err) {
